@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BioLine Company{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Optionally, add Google Fonts for better look -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500,700&display=swap" rel="stylesheet">
+    <!-- Optionally, use an icon font like FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .logout-fixed-btn {
+            position: fixed;
+            top: 22px;
+            left: 22px;
+            z-index: 999;
+        }
+        .logout-btn {
+            background: linear-gradient(90deg, #1976d2 60%, #1565c0 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 26px 10px 20px;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(25, 118, 210, 0.13), 0 1.5px 3px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: background 0.18s, transform 0.1s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            letter-spacing: .02em;
+        }
+        .logout-btn:hover {
+            background: linear-gradient(90deg, #1565c0 70%, #1976d2 100%);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 22px rgba(25, 118, 210, 0.21);
+        }
+        .logout-btn:active {
+            background: #1565c0;
+            transform: scale(0.98);
+        }
+        .logout-btn i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Logout Button -->
+    <div class="logout-fixed-btn">
+        <a href="{{ url_for('logout') }}">
+            <button class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+        </a>
+    </div>
+
+    <header>
+        <h1>BioLine Company Management</h1>
+        <nav>
+            <a href="/">Branches</a>
+            <a href="/add_company">Add Branch</a>
+            <a href="/customers">Customers</a>
+            <a href="/suppliers">Suppliers</a>
+            <a href="/reporting">Reporting</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
